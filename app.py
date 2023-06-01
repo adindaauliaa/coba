@@ -3,21 +3,19 @@
 from flask import Flask,render_template,request,jsonify
 from flask_ngrok import run_with_ngrok
 from werkzeug.utils import secure_filename
-import numpy as np
 import pandas as pd
+import numpy as np
+
+import tensorflow
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.optimizers import Adam, SGD
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Input, Flatten, Dropout, UpSampling2D, GlobalAveragePooling2D
+from tensorflow.keras.models import Model
+from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2
+
 import matplotlib.pyplot as plt
-import os
-import tensorflow as tf
-from tensorflow.keras.utils import image_dataset_from_directory
-from tensorflow.data.experimental import AUTOTUNE
-from tensorflow.keras import Sequential, Input, Model
-from tensorflow.keras.layers import RandomRotation, RandomZoom
-from tensorflow.keras.layers.experimental.preprocessing import Rescaling
-from tensorflow.keras.layers import Dense, GlobalAveragePooling2D, Dropout
-from tensorflow.keras import applications
-from tensorflow.keras.losses import CategoricalCrossentropy
-from tensorflow.keras.optimizers import Adam
-from PIL import Image
+import matplotlib.image as mpimg
+import random, os
 from fungsi import make_model
 
 # =[Variabel Global]=============================
@@ -30,8 +28,8 @@ app.config['UPLOAD_PATH']        = './static/images/uploads/'
 
 model = None
 
-NUM_CLASSES = 5
-Wayang5_classes = ["bagong", "cepot", "gareng", "petruk", "semar"] 
+NUM_CLASSES = 6
+Wayang6_classes = ["Wayang Beber", "Wayang Gedog", "Wayang Golek", "Wayang Krucil", "Wayang Kulit", "Wayang Suluh"]
 
 # =[Routing]=====================================
 
