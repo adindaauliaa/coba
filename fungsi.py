@@ -16,6 +16,7 @@ def make_model_mobile():
     img_size = 224
     batch_size_train = 32
     batch_size_test = 1
+    optimizer = Adam(learning_rate=0.00001)
     
     inp = Input(shape = (224,224,3))
     model_mobile = MobileNetV2(input_shape=(224,224,3), include_top=False, weights='imagenet')
