@@ -1,10 +1,16 @@
-import tensorflow as tf
-from tensorflow.keras.layers.experimental.preprocessing import Rescaling
-from tensorflow.keras.layers import RandomRotation, RandomZoom, Dense, GlobalAveragePooling2D
-from tensorflow.keras.models import Sequential, Model
-from tensorflow.keras.applications import EfficientNetB0
-from tensorflow.keras.losses import CategoricalCrossentropy
-from tensorflow.keras.optimizers import Adam
+import pandas as pd
+import numpy as np
+
+import tensorflow
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.optimizers import Adam, SGD
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Input, Flatten, Dropout, UpSampling2D, GlobalAveragePooling2D
+from tensorflow.keras.models import Model
+from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2
+
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+import random, os
 
 def make_model_mobile():
     img_size = 224
