@@ -68,7 +68,7 @@ def apiDeteksi():
 
 			
 			# Mengubah Ukuran Gambar
-			test_image_resized = test_image.resize((128, 128))
+			test_image_resized = test_image.resize((224, 224))
 			
 			# Konversi Gambar ke Array
 			image_array        = np.array(test_image_resized)
@@ -102,7 +102,7 @@ if __name__ == '__main__':
 	
 	# Load model yang telah ditraining
 	model = make_model()
-	model.load_weights("modelwayangcoba.h5")
+	model.load_weights("model_wayang.h5")
 
 	# Run Flask di localhost 
 	run_with_ngrok(app)
