@@ -16,7 +16,7 @@ from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import random, os
-from fungsi import make_model
+from fungsi import make_model_mobile
 
 # =[Variabel Global]=============================
 
